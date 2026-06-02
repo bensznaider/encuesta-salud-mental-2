@@ -33,13 +33,22 @@ export const RadioQuestionCard = ({
   selected,
   onSelect,
   fixedValue,
+  rrq = false,
 }) => {
-  const options = [
-    { text: "Nunca", value: 0 },
-    { text: "Varios días", value: 1 },
-    { text: "Más de la mitad de los días", value: 2 },
-    { text: "Casi todos los días", value: 3 },
-  ];
+  const options = rrq
+    ? [
+        { text: "En desacuerdo", value: 0 },
+        { text: "Levemente en desacuerdo", value: 1 },
+        { text: "No estoy de acuerdo ni en desacuerdo", value: 2 },
+        { text: "Levemente de acuerdo", value: 3 },
+        { text: "De acuerdo", value: 4 },
+      ]
+    : [
+        { text: "Nunca", value: 0 },
+        { text: "Varios días", value: 1 },
+        { text: "Más de la mitad de los días", value: 2 },
+        { text: "Casi todos los días", value: 3 },
+      ];
 
   const isFixed = typeof fixedValue === "number";
 

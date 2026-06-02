@@ -30,4 +30,17 @@ const gad7 = [
   "Sentir miedo como si algo terrible pudiera suceder.",
 ];
 
-export { phq2, gad2, phq9, gad7 };
+const rrq = [
+  "Con frecuencia centro mi atención en aspectos de mí mismo sobre los que quisiera dejar de pensar",
+  "Siempre estoy re-editando en mi mente cosas recientes que he dicho o hecho.",
+  "A veces me es difícil desconectarme de pensamientos acerca de mí mismo.",
+  "Mucho tiempo después de concluida una discusión o desacuerdo con alguien, mis pensamientos vuelven una y otra vez a lo que sucedió.",
+  "Tiendo a pensar persistentemente en las cosas que me pasan por mucho tiempo después de ocurridas.",
+  "No pierdo el tiempo en repensar las cosas que he hecho o que han pasado.",
+  "Con frecuencia me encuentro reevaluando lo que he hecho.",
+  "Me es fácil sacar los pensamientos no deseados de mi mente.",
+  "Con frecuencia reflexiono sobre momentos de mi vida por los que ya no debería preocuparme.",
+  "Desperdicio mucho tiempo pensando una y otra vez en momentos en los que sentí vergüenza y decepción.",
+];
+
+export { phq2, gad2, phq9, gad7, rrq };

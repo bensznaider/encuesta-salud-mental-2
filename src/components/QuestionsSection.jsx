@@ -1,4 +1,4 @@
-import { RadioQuestionCard } from "./QuestionCards";
+import { RadioQuestionCard, RadioQuestionCard2 } from "./QuestionCards";
 import { useState, useEffect } from "react";
 import { api } from "../api";
 
@@ -43,8 +43,13 @@ export default function QuestionsSection({
         fecha: new Date().toISOString(),
         phq2: (form.basic[0] ?? 0) + (form.basic[1] ?? 0),
         gad2: (form.basic[2] ?? 0) + (form.basic[3] ?? 0),
-        phq9: phq9Enabled ? form.phq9.reduce((a, v) => a + (v ?? 0), 0) : null,
-        gad7: gad7Enabled ? form.gad7.reduce((a, v) => a + (v ?? 0), 0) : null,
+        phq9: phq9Enabled
+          ? form.phq9.reduce((sum, value) => sum + (value ?? 0), 0)
+          : null,
+        gad7: gad7Enabled
+          ? form.gad7.reduce((sum, value) => sum + (value ?? 0), 0)
+          : null,
+        rrq: form.rrq.reduce((sum, value) => sum + (value ?? 0), 0),
       };
 
       await api.guardarRespuesta(payload);
@@ -54,7 +59,7 @@ export default function QuestionsSection({
       setSending(false);
       setErrorMessage(
         "Ocurrió el siguiente error al enviar, por favor informar al administrador del sitio: " +
-          (e?.message || e)
+          (e?.message || e),
       );
     }
   }
@@ -62,30 +67,34 @@ export default function QuestionsSection({
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <div className="section-title-box">
-        {flag === "basic"
-          ? "Preguntas iniciales"
-          : `En base a sus respuestas a las preguntas iniciales, le proponemos continuar con las siguientes preguntas ${
-              currentSection === 2 && endsForm
-                ? ""
-                : currentSection === 3
-                ? "(2/2)"
-                : "(1/2)"
-            }`}
+        {flag === "rrq"
+          ? "PREGUNTAR A QUITO SI ACÁ PONGO MENSAJE ESPECÍFICO PARA rrq"
+          : flag === "basic"
+            ? "Preguntas iniciales"
+            : `En base a sus respuestas a las preguntas iniciales, le proponemos continuar con las siguientes preguntas ${
+                currentSection === 2 && endsForm
+                  ? ""
+                  : currentSection === 3
+                    ? "(2/2)"
+                    : "(1/2)"
+              }`}
       </div>
-      <div
-        style={{
-          backgroundColor: "#005699",
-          color: "white",
-          borderRadius: "10px",
-          padding: "1.5rem",
-        }}
-      >
-        {"Durante las "}
-        <b>
-          <u>últimas 2 semanas</u>
-        </b>
-        {", ¿con qué frecuencia le han molestado los siguientes problemas?"}
-      </div>
+      {flag !== "rrq" && (
+        <div
+          style={{
+            backgroundColor: "#005699",
+            color: "white",
+            borderRadius: "10px",
+            padding: "1.5rem",
+          }}
+        >
+          {"Durante las "}
+          <b>
+            <u>últimas 2 semanas</u>
+          </b>
+          {", ¿con qué frecuencia le han molestado los siguientes problemas?"}
+        </div>
+      )}
       {questions.map((_, index) => (
         <RadioQuestionCard
           key={index}
@@ -103,6 +112,7 @@ export default function QuestionsSection({
               return { ...f, [flag]: newArray };
             })
           }
+          rrq={flag === "rrq"}
         />
       ))}
       <div style={{ display: "flex", justifyContent: "space-between" }}>

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import PersonalDataSection from "./components/PersonalDataSection";
 import QuestionsSection from "./components/QuestionsSection";
-import { phq2, gad2, phq9, gad7 } from "./lib/questions";
+import { phq2, gad2, phq9, gad7, rrq } from "./lib/questions";
 import FinalMessageSection from "./components/FinalMessageSection";
 
 export default function App() {
+  const rrqInitialValues = Array(10).fill(null);
   const [form, setForm] = useState({
     apellido: "",
     nombre: "",
@@ -14,6 +15,7 @@ export default function App() {
     basic: [null, null, null, null],
     phq9: [null, null, null, null, null, null, null, null, null],
     gad7: [null, null, null, null, null, null, null],
+    rrq: rrqInitialValues,
   });
   const [currentSection, setCurrentSection] = useState(0);
   const [phq9Enabled, setPhq9Enabled] = useState(false);
@@ -91,7 +93,6 @@ export default function App() {
           setForm={setForm}
           flag="basic"
           initialValues={[null, null, null, null]}
-          endsForm={!phq9Enabled && !gad7Enabled}
         />
       )}
       {currentSection === 2 &&
@@ -114,7 +115,6 @@ export default function App() {
               null,
               null,
             ]}
-            endsForm
             phq9Enabled={phq9Enabled}
             gad7Enabled={gad7Enabled}
           />
@@ -137,6 +137,8 @@ export default function App() {
               null,
               null,
             ]}
+            phq9Enabled={phq9Enabled}
+            gad7Enabled={gad7Enabled}
           />
         ) : !phq9Enabled && gad7Enabled ? (
           <QuestionsSection
@@ -155,12 +157,19 @@ export default function App() {
               null,
               null,
             ]}
-            endsForm
             phq9Enabled={phq9Enabled}
             gad7Enabled={gad7Enabled}
           />
         ) : (
-          <FinalMessageSection
+          <QuestionsSection
+            questions={rrq}
+            currentSection={currentSection}
+            setCurrentSection={setCurrentSection}
+            form={form}
+            setForm={setForm}
+            flag="rrq"
+            initialValues={rrqInitialValues}
+            endsForm
             phq9Enabled={phq9Enabled}
             gad7Enabled={gad7Enabled}
           />
@@ -183,6 +192,38 @@ export default function App() {
               null,
               null,
             ]}
+            phq9Enabled={phq9Enabled}
+            gad7Enabled={gad7Enabled}
+          />
+        ) : !phq9Enabled && !gad7Enabled ? (
+          <FinalMessageSection
+            phq9Enabled={phq9Enabled}
+            gad7Enabled={gad7Enabled}
+          />
+        ) : (
+          <QuestionsSection
+            questions={rrq}
+            currentSection={currentSection}
+            setCurrentSection={setCurrentSection}
+            form={form}
+            setForm={setForm}
+            flag="rrq"
+            initialValues={rrqInitialValues}
+            endsForm
+            phq9Enabled={phq9Enabled}
+            gad7Enabled={gad7Enabled}
+          />
+        ))}
+      {currentSection === 4 &&
+        (gad7Enabled && phq9Enabled ? (
+          <QuestionsSection
+            questions={rrq}
+            currentSection={currentSection}
+            setCurrentSection={setCurrentSection}
+            form={form}
+            setForm={setForm}
+            flag="rrq"
+            initialValues={rrqInitialValues}
             endsForm
             phq9Enabled={phq9Enabled}
             gad7Enabled={gad7Enabled}
@@ -193,7 +234,7 @@ export default function App() {
             gad7Enabled={gad7Enabled}
           />
         ))}
-      {currentSection === 4 && (
+      {currentSection === 5 && (
         <FinalMessageSection
           phq9Enabled={phq9Enabled}
           gad7Enabled={gad7Enabled}
