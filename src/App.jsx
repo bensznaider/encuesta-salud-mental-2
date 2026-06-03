@@ -11,6 +11,9 @@ export default function App() {
     nombre: "",
     dni: "",
     telefono: "",
+    background: "",
+    treatment: null,
+    therapy: null,
     //BASIC IS PHQ2 + GAD2, MERGED INTO ONE ARRAY SO THAT BOTH APPEAR IN THE SAME SECTION
     basic: [null, null, null, null],
     phq9: [null, null, null, null, null, null, null, null, null],
@@ -64,9 +67,13 @@ export default function App() {
             marginTop: 0,
             marginBottom: 0,
             borderBottom: 0,
+            gap: "0.5rem",
           }}
         >
           <h1>Encuesta de salud mental</h1>
+          <h2 style={{ fontSize: "1.5rem", fontWeight: "normal" }}>
+            Clínica de Insuficiencia Cardíaca
+          </h2>
         </div>
         <div
           className="question-box"

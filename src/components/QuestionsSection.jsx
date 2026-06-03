@@ -1,4 +1,4 @@
-import { RadioQuestionCard, RadioQuestionCard2 } from "./QuestionCards";
+import { RadioQuestionCard } from "./QuestionCards";
 import { useState, useEffect } from "react";
 import { api } from "../api";
 
@@ -41,6 +41,9 @@ export default function QuestionsSection({
         dni: form.dni?.trim() ?? "",
         telefono: form.telefono?.trim() ?? "",
         fecha: new Date().toISOString(),
+        background: form.background ?? "",
+        treatment: form.treatment ?? null,
+        therapy: form.therapy ?? null,
         phq2: (form.basic[0] ?? 0) + (form.basic[1] ?? 0),
         gad2: (form.basic[2] ?? 0) + (form.basic[3] ?? 0),
         phq9: phq9Enabled
@@ -66,9 +69,9 @@ export default function QuestionsSection({
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <div className="section-title-box">
+      {/*  <div className="section-title-box">
         {flag === "rrq"
-          ? "PREGUNTAR A QUITO SI ACÁ PONGO MENSAJE ESPECÍFICO PARA rrq"
+          ? "Los siguientes ítems han sido diseñados para medir tipos de pensamientos. Lea cada uno de ellos y decida en qué medida usted está o no de acuerdo. No hay respuestas correctas ni incorrectas."
           : flag === "basic"
             ? "Preguntas iniciales"
             : `En base a sus respuestas a las preguntas iniciales, le proponemos continuar con las siguientes preguntas ${
@@ -78,7 +81,7 @@ export default function QuestionsSection({
                     ? "(2/2)"
                     : "(1/2)"
               }`}
-      </div>
+      </div> */}
       {flag !== "rrq" && (
         <div
           style={{

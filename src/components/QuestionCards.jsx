@@ -37,17 +37,17 @@ export const RadioQuestionCard = ({
 }) => {
   const options = rrq
     ? [
-        { text: "En desacuerdo", value: 0 },
-        { text: "Levemente en desacuerdo", value: 1 },
-        { text: "No estoy de acuerdo ni en desacuerdo", value: 2 },
-        { text: "Levemente de acuerdo", value: 3 },
-        { text: "De acuerdo", value: 4 },
+        { text: "0 - En desacuerdo", value: 0 },
+        { text: "1 - Levemente en desacuerdo", value: 1 },
+        { text: "2 - No estoy de acuerdo ni en desacuerdo", value: 2 },
+        { text: "3 - Levemente de acuerdo", value: 3 },
+        { text: "4 - De acuerdo", value: 4 },
       ]
     : [
-        { text: "Nunca", value: 0 },
-        { text: "Varios días", value: 1 },
-        { text: "Más de la mitad de los días", value: 2 },
-        { text: "Casi todos los días", value: 3 },
+        { text: "0 - Nunca", value: 0 },
+        { text: "1 - Varios días", value: 1 },
+        { text: "2 - Más de la mitad de los días", value: 2 },
+        { text: "3 - Casi todos los días", value: 3 },
       ];
 
   const isFixed = typeof fixedValue === "number";
@@ -85,6 +85,192 @@ export const RadioQuestionCard = ({
           );
         })}
       </div>
+    </div>
+  );
+};
+
+export const PastDisorderQuestionCard = ({
+  background,
+  onBackgroundChange,
+  otherText,
+  onOtherTextChange,
+  treatment,
+  onTreatmentChange,
+  therapy,
+  onTherapyChange,
+}) => {
+  const disorderOptions = [
+    { label: "Depresion", value: "Depresion" },
+    { label: "Ansiedad", value: "Ansiedad" },
+    {
+      label: "Trastorno de estrés postraumático",
+      value: "Trastorno de estrés postraumático",
+    },
+    { label: "Otro", value: "Otro" },
+    { label: "Ninguno", value: "Ninguno" },
+  ];
+
+  const standardOptions = ["Depresion", "Ansiedad", "Trastorno de estrés postraumático", "Ninguno", "Otro"];
+  const isNone = background === "Ninguno" || !background;
+  const isOther = otherText.length > 0 || background === "Otro";
+  const selectedOption = standardOptions.includes(background) ? background : (background && background.trim().length > 0 ? "Otro" : null);
+
+  const handleBackgroundSelect = (value) => {
+    onBackgroundChange(value);
+
+    // If selecting "Ninguno", clear treatment and therapy
+    if (value === "Ninguno") {
+      onTreatmentChange(null);
+      onTherapyChange(null);
+    }
+  };
+
+  return (
+    <div>
+      <div className="question-box">
+        <label className="question-title">
+          ¿Presenta antecedentes de trastornos de salud mental?
+        </label>
+        <div>
+          {disorderOptions.map((opt) => (
+            <label
+              key={opt.value}
+              style={{
+                display: "block",
+                marginBottom: "8px",
+                cursor: "pointer",
+                padding: "6px 0",
+              }}
+            >
+              <input
+                type="radio"
+                checked={selectedOption === opt.value}
+                onChange={() => handleBackgroundSelect(opt.value)}
+                style={{ marginRight: "8px" }}
+              />
+              {opt.label}
+            </label>
+          ))}
+        </div>
+
+        {isOther && (
+          <div>
+            <input
+              type="text"
+              maxLength={100}
+              value={otherText}
+              onChange={(e) => onOtherTextChange(e.target.value)}
+              placeholder="Especificar (máximo 100 caracteres)"
+              style={{
+                width: "100%",
+                border: "none",
+                borderBottom: "2px solid #cccccc",
+                paddingBottom: "4px",
+                fontSize: "inherit",
+                transition: "all 0.2s ease",
+              }}
+              onFocus={(e) =>
+                (e.target.style.borderBottom = "2px solid #005699")
+              }
+              onBlur={(e) =>
+                (e.target.style.borderBottom = "2px solid #cccccc")
+              }
+            />
+          </div>
+        )}
+      </div>
+
+      {background !== null && (
+        <div className="question-box" style={{ marginTop: "1rem" }}>
+          <label className="question-title">
+            En caso afirmativo
+          </label>
+
+          <div>
+            <label style={{ display: "block", marginBottom: "0.5rem" }}>
+              ¿Recibe tratamiento farmacológico?
+            </label>
+            <div style={{ display: "flex", gap: "1rem" }}>
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: isNone ? "not-allowed" : "pointer",
+                  color: isNone ? "#cccccc" : "inherit",
+                }}
+              >
+                <input
+                  type="radio"
+                  checked={treatment === true}
+                  disabled={isNone}
+                  onChange={() => onTreatmentChange(true)}
+                  style={{ marginRight: "8px" }}
+                />
+                Sí
+              </label>
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: isNone ? "not-allowed" : "pointer",
+                  color: isNone ? "#cccccc" : "inherit",
+                }}
+              >
+                <input
+                  type="radio"
+                  checked={treatment === false}
+                  disabled={isNone}
+                  onChange={() => onTreatmentChange(false)}
+                  style={{ marginRight: "8px" }}
+                />
+                No
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label style={{ display: "block", marginBottom: "0.5rem" }}>
+              ¿Hace psicoterapia?
+            </label>
+            <div style={{ display: "flex", gap: "1rem" }}>
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: isNone ? "not-allowed" : "pointer",
+                  color: isNone ? "#cccccc" : "inherit",
+                }}
+              >
+                <input
+                  type="radio"
+                  checked={therapy === true}
+                  disabled={isNone}
+                  onChange={() => onTherapyChange(true)}
+                  style={{ marginRight: "8px" }}
+                />
+                Sí
+              </label>
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: isNone ? "not-allowed" : "pointer",
+                  color: isNone ? "#cccccc" : "inherit",
+                }}
+              >
+                <input
+                  type="radio"
+                  checked={therapy === false}
+                  disabled={isNone}
+                  onChange={() => onTherapyChange(false)}
+                  style={{ marginRight: "8px" }}
+                />
+                No
+              </label>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
