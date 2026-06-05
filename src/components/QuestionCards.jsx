@@ -157,10 +157,10 @@ export const PastDisorderQuestionCard = ({
           <div>
             <input
               type="text"
-              maxLength={100}
+              maxLength={50}
               value={otherText}
               onChange={(e) => onOtherTextChange(e.target.value)}
-              placeholder="Especificar (máximo 100 caracteres)"
+              placeholder="Especificar (máximo 50 caracteres)"
               style={{
                 width: "100%",
                 border: "none",
