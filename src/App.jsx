@@ -76,7 +76,7 @@ export default function App() {
           }}
         >
           <h1>Encuesta de salud mental</h1>
-          <h2 style={{ fontSize: "1.5rem", fontWeight: "normal" }}>
+          <h2 style={{ fontSize: "2rem", fontWeight: "normal" }}>
             Clínica de Insuficiencia Cardíaca
           </h2>
         </div>

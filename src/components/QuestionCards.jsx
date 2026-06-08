@@ -21,7 +21,7 @@ export const InputQuestionCard = ({ label, value, onChange }) => {
           border: "none",
           borderBottom: focused ? "2px solid #005699" : "2px solid #cccccc",
           paddingBottom: "4px",
-          fontSize: "18px",
+          fontSize: "20px",
           transition: "all 0.2s ease",
         }}
       />
@@ -71,7 +71,7 @@ export const RadioQuestionCard = ({
                 marginBottom: "8px",
                 cursor: isFixed ? "not-allowed" : "pointer",
                 padding: "6px 0",
-                fontSize: "18px",
+                fontSize: "20px",
                 color: isFixed && fixedValue === opt.value ? "grey" : "inherit",
               }}
             >
@@ -152,7 +152,7 @@ export const PastDisorderQuestionCard = ({
                 marginBottom: "8px",
                 cursor: "pointer",
                 padding: "6px 0",
-                fontSize: "18px",
+                fontSize: "20px",
               }}
             >
               <input
@@ -179,7 +179,7 @@ export const PastDisorderQuestionCard = ({
                 border: "none",
                 borderBottom: "2px solid #cccccc",
                 paddingBottom: "4px",
-                fontSize: "18px",
+                fontSize: "20px",
                 transition: "all 0.2s ease",
               }}
               onFocus={(e) =>
@@ -202,7 +202,7 @@ export const PastDisorderQuestionCard = ({
               style={{
                 display: "block",
                 marginBottom: "0.5rem",
-                fontSize: "18px",
+                fontSize: "20px",
               }}
             >
               ¿Recibe tratamiento farmacológico?
@@ -212,7 +212,7 @@ export const PastDisorderQuestionCard = ({
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  fontSize: "18px",
+                  fontSize: "20px",
                   cursor: isNone ? "not-allowed" : "pointer",
                   color: isNone ? "#cccccc" : "inherit",
                 }}
@@ -230,7 +230,7 @@ export const PastDisorderQuestionCard = ({
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  fontSize: "18px",
+                  fontSize: "20px",
                   cursor: isNone ? "not-allowed" : "pointer",
                   color: isNone ? "#cccccc" : "inherit",
                 }}
@@ -252,7 +252,7 @@ export const PastDisorderQuestionCard = ({
               style={{
                 display: "block",
                 marginBottom: "0.5rem",
-                fontSize: "18px",
+                fontSize: "20px",
               }}
             >
               ¿Hace psicoterapia?
@@ -262,7 +262,7 @@ export const PastDisorderQuestionCard = ({
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  fontSize: "18px",
+                  fontSize: "20px",
                   cursor: isNone ? "not-allowed" : "pointer",
                   color: isNone ? "#cccccc" : "inherit",
                 }}
@@ -280,7 +280,7 @@ export const PastDisorderQuestionCard = ({
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  fontSize: "18px",
+                  fontSize: "20px",
                   cursor: isNone ? "not-allowed" : "pointer",
                   color: isNone ? "#cccccc" : "inherit",
                 }}

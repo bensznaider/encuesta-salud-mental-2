@@ -40,7 +40,7 @@ export default function PersonalDataSection({
           color: "white",
           borderRadius: "10px",
           padding: "1.5rem",
-          fontSize: "18px",
+          fontSize: "20px",
         }}
       >
         Estimado/a paciente:

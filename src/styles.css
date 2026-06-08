@@ -14,13 +14,13 @@ body {
     Segoe UI,
     Roboto,
     Arial;
-  max-width: 800px;
+  max-width: 940px;
   margin: 24px auto 0 auto;
   background-color: #f4f4f4;
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 54px;
   font-weight: normal;
 }
 
@@ -34,10 +34,11 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  font-size: 18px;
 }
 
 .question-title {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 500;
 }
 
@@ -47,7 +48,7 @@ h1 {
   border: none;
   border-radius: 5px;
   padding: 0.5rem 1.25rem;
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
   align-self: flex-end;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
@@ -57,6 +58,7 @@ h1 {
   background-color: transparent;
   color: gray;
   padding: 0.5rem 1.25rem;
+  font-size: 22px;
   border: none;
   border-radius: 5px;
   box-shadow: none;
@@ -75,7 +77,7 @@ h1 {
   cursor: pointer;
   color: #005699;
   padding: 0.5rem 1.25rem;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .clear-form-button:hover {
@@ -85,7 +87,7 @@ h1 {
 .section-title-box {
   padding: 1.5rem;
   background-color: rgb(172, 172, 172);
-  font-size: 24px;
+  font-size: 26px;
   color: white;
   border-radius: 10px;
   display: flex;

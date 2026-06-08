@@ -89,7 +89,7 @@ export default function QuestionsSection({
             color: "white",
             borderRadius: "10px",
             padding: "1.5rem",
-            fontSize: "18px",
+            fontSize: "20px",
           }}
         >
           {"Durante las "}
