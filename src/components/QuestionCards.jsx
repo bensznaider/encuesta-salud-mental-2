@@ -21,6 +21,7 @@ export const InputQuestionCard = ({ label, value, onChange }) => {
           border: "none",
           borderBottom: focused ? "2px solid #005699" : "2px solid #cccccc",
           paddingBottom: "4px",
+          fontSize: "18px",
           transition: "all 0.2s ease",
         }}
       />
@@ -70,6 +71,7 @@ export const RadioQuestionCard = ({
                 marginBottom: "8px",
                 cursor: isFixed ? "not-allowed" : "pointer",
                 padding: "6px 0",
+                fontSize: "18px",
                 color: isFixed && fixedValue === opt.value ? "grey" : "inherit",
               }}
             >
@@ -110,10 +112,20 @@ export const PastDisorderQuestionCard = ({
     { label: "Ninguno", value: "Ninguno" },
   ];
 
-  const standardOptions = ["Depresion", "Ansiedad", "Trastorno de estrés postraumático", "Ninguno", "Otro"];
+  const standardOptions = [
+    "Depresion",
+    "Ansiedad",
+    "Trastorno de estrés postraumático",
+    "Ninguno",
+    "Otro",
+  ];
   const isNone = background === "Ninguno" || !background;
   const isOther = otherText.length > 0 || background === "Otro";
-  const selectedOption = standardOptions.includes(background) ? background : (background && background.trim().length > 0 ? "Otro" : null);
+  const selectedOption = standardOptions.includes(background)
+    ? background
+    : background && background.trim().length > 0
+      ? "Otro"
+      : null;
 
   const handleBackgroundSelect = (value) => {
     onBackgroundChange(value);
@@ -140,6 +152,7 @@ export const PastDisorderQuestionCard = ({
                 marginBottom: "8px",
                 cursor: "pointer",
                 padding: "6px 0",
+                fontSize: "18px",
               }}
             >
               <input
@@ -166,7 +179,7 @@ export const PastDisorderQuestionCard = ({
                 border: "none",
                 borderBottom: "2px solid #cccccc",
                 paddingBottom: "4px",
-                fontSize: "inherit",
+                fontSize: "18px",
                 transition: "all 0.2s ease",
               }}
               onFocus={(e) =>
@@ -182,12 +195,16 @@ export const PastDisorderQuestionCard = ({
 
       {background !== null && (
         <div className="question-box" style={{ marginTop: "1rem" }}>
-          <label className="question-title">
-            En caso afirmativo
-          </label>
+          <label className="question-title">En caso afirmativo</label>
 
           <div>
-            <label style={{ display: "block", marginBottom: "0.5rem" }}>
+            <label
+              style={{
+                display: "block",
+                marginBottom: "0.5rem",
+                fontSize: "18px",
+              }}
+            >
               ¿Recibe tratamiento farmacológico?
             </label>
             <div style={{ display: "flex", gap: "1rem" }}>
@@ -195,6 +212,7 @@ export const PastDisorderQuestionCard = ({
                 style={{
                   display: "flex",
                   alignItems: "center",
+                  fontSize: "18px",
                   cursor: isNone ? "not-allowed" : "pointer",
                   color: isNone ? "#cccccc" : "inherit",
                 }}
@@ -212,6 +230,7 @@ export const PastDisorderQuestionCard = ({
                 style={{
                   display: "flex",
                   alignItems: "center",
+                  fontSize: "18px",
                   cursor: isNone ? "not-allowed" : "pointer",
                   color: isNone ? "#cccccc" : "inherit",
                 }}
@@ -229,7 +248,13 @@ export const PastDisorderQuestionCard = ({
           </div>
 
           <div>
-            <label style={{ display: "block", marginBottom: "0.5rem" }}>
+            <label
+              style={{
+                display: "block",
+                marginBottom: "0.5rem",
+                fontSize: "18px",
+              }}
+            >
               ¿Hace psicoterapia?
             </label>
             <div style={{ display: "flex", gap: "1rem" }}>
@@ -237,6 +262,7 @@ export const PastDisorderQuestionCard = ({
                 style={{
                   display: "flex",
                   alignItems: "center",
+                  fontSize: "18px",
                   cursor: isNone ? "not-allowed" : "pointer",
                   color: isNone ? "#cccccc" : "inherit",
                 }}
@@ -254,6 +280,7 @@ export const PastDisorderQuestionCard = ({
                 style={{
                   display: "flex",
                   alignItems: "center",
+                  fontSize: "18px",
                   cursor: isNone ? "not-allowed" : "pointer",
                   color: isNone ? "#cccccc" : "inherit",
                 }}

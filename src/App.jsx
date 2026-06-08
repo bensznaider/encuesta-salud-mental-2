@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import PersonalDataSection from "./components/PersonalDataSection";
 import QuestionsSection from "./components/QuestionsSection";
 import { phq2, gad2, phq9, gad7, rrq } from "./lib/questions";
 import FinalMessageSection from "./components/FinalMessageSection";
 
 export default function App() {
+  const topRef = useRef(null);
   const rrqInitialValues = Array(10).fill(null);
   const [form, setForm] = useState({
     apellido: "",
@@ -45,12 +46,16 @@ export default function App() {
     // The goal is to force the browser to evaluate scrollY
     // to avoid some bug where scrollTo is ignored in some cases when
     // navigating between sections
-    const Y = window.scrollY;
-    window.scrollTo({ top: Y - Y, behavior: "smooth" });
+    //const Y = window.scrollY;
+    //window.scrollTo({ top: Y - Y, behavior: "smooth" });
+    topRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   }, [currentSection]);
 
   return (
-    <div style={{ padding: "0 10px" }}>
+    <div style={{ padding: "0 10px" }} ref={topRef}>
       <div style={{ marginBottom: "20px" }}>
         <div
           style={{
