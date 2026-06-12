@@ -42,8 +42,8 @@ export default function QuestionsSection({
         telefono: form.telefono?.trim() ?? "",
         fecha: new Date().toISOString(),
         background: form.background ?? "",
-        treatment: form.treatment ?? null,
-        therapy: form.therapy ?? null,
+        treatment: form.treatment === true ? "Sí" : form.treatment === false ? "No" : null,
+        therapy: form.therapy === true ? "Sí" : form.therapy === false ? "No" : null,
         phq2: (form.basic[0] ?? 0) + (form.basic[1] ?? 0),
         gad2: (form.basic[2] ?? 0) + (form.basic[3] ?? 0),
         phq9: phq9Enabled

@@ -43,11 +43,7 @@ export default function App() {
   }, [form.basic]);
 
   useEffect(() => {
-    // The goal is to force the browser to evaluate scrollY
-    // to avoid some bug where scrollTo is ignored in some cases when
-    // navigating between sections
-    //const Y = window.scrollY;
-    //window.scrollTo({ top: Y - Y, behavior: "smooth" });
+    // Method window.scrollTo() doesn't work properly in Google Apps Script
     topRef.current?.scrollIntoView({
       behavior: "smooth",
       block: "start",
